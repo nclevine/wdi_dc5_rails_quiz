@@ -1,1 +1,14 @@
-
+<h2><%= @circus.name %></h2>
+<%= image_tag @circus.image_url %>
+<p><%= link_to "Edit Circus Info", edit_circus_path(@circus) %></p>
+<h3>Performers</h3>
+<p><%= link_to "Add Entertainer", new_circus_entertainer_path(@circus, Entertainer.new) %></p>
+<div class="entertainers">
+  <% if @circus.entertainers.empty? %>
+    <p>No entertainers</p>
+  <% else %>
+    <% @circus.entertainers.each do |entertainer| %>
+      <p><%= entertainer.name.capitalize %>: <%= entertainer.specialty %></p>
+    <% end %>
+  <% end %>
+</div>

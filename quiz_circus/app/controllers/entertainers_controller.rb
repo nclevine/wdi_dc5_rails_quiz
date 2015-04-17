@@ -12,7 +12,8 @@ class EntertainersController < ApplicationController
   end
 
   def create
-    @entertainer = Entertainer.new(entertainer_params)
+    @circus = Circus.find(params[:circus_id])
+    @entertainer = @circus.entertainers.new(entertainer_params)
     if @entertainer.save
       redirect_to @entertainer
     else
@@ -39,6 +40,6 @@ class EntertainersController < ApplicationController
 
   private
   def entertainer_params
-    params.require(:entertainer).permit(:name, :specialty)
+    params.require(:entertainer).permit(:name, :specialty, :circus_id)
   end
 end

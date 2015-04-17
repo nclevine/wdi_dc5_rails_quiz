@@ -1,4 +1,5 @@
 <%= form_for @entertainer do |f| %>
+  <%= f.hidden_field :circus_id, @circus.id %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
